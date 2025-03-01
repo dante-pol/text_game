@@ -1,4 +1,5 @@
 from mechanics import *
+from enteties_factory import *
 #жизни от 0 до 100 урон от 1 до 15 бонус к урону от 1 - 7
 print("Приветствуем в нашей текстовой игре")
 
@@ -56,5 +57,10 @@ def count_bonus_damage(skill):
 sum_damage = count_damage(weapon) + count_bonus_damage(skill)
 damage_list.append(sum_damage)
 
-health_list.append(count_health(armor))
+health = count_health(armor)
 
+player = create_players(health,sum_damage)
+
+monster = create_monster()
+
+fight_monster_melee(player, monster)
