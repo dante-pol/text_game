@@ -22,3 +22,21 @@ def fight_monster_melee(player: list[int, int], monster: list[int, int]):
 
     if monster_hp > 0:
         return "Монстр одержал победу!"
+
+
+def loot_box(items: list[str, ...]) -> None or str:
+    import random
+    import time
+
+    is_lucky_loot = random.randint(0, 100) > 80
+
+    for i in range(0, 101, 1):
+        if not is_lucky_loot and i == 98:
+            return None
+
+        print(f"looting progress {i}%...")
+        time.sleep(0.15)
+
+    if is_lucky_loot:
+        item_index = random.randint(0, len(items))
+        return items[item_index]
