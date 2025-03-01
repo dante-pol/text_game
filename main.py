@@ -1,16 +1,12 @@
-# This is a sample Python script.
+#жизни от 0 до 100 урон от 1 до 15 бонус к урону от 1 - 7
+print("Приветствуем в нашей текстовой игре")
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+print("Выберите свое снаряжение")
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+weapon = int(input("Выбор оружия\n1.обычный меч\n2.пистолет\n3.посох мага"))
+selection = []
+selection.append(weapon)
+armor = int(input("Выбор брони\n1.Латная броня\n2.бронежилет\n3.роба мага"))
+selection.append(armor)
+skill = int(input("Выбор способности\n1.усиление физических показателей\n2.ускоренная перезарядка\n3.знание начальных заклинаний"))
+selection.append(skill)
