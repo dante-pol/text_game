@@ -1,4 +1,4 @@
-def fight_monster_melee(player: list[int, int], monster: list[int, int]):
+def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
     import random
 
     player_hp = player[0]
