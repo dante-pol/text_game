@@ -1,4 +1,4 @@
-def fight_monster_melee(player: list[int, int], monster: list[int, int]):
+def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
     import random
 
     player_hp = player[0]
@@ -40,3 +40,18 @@ def loot_box(items: list[str, ...]) -> None or str:
     if is_lucky_loot:
         item_index = random.randint(0, len(items))
         return items[item_index]
+
+
+def create_monster() -> list[str, int, int]:
+    import monstersconfigs
+    import random
+
+    name = monstersconfigs.NAMES[random.randint(0, monstersconfigs.NAMES)]
+    hp = monstersconfigs.HEAT_POINTS[random.randint(0, monstersconfigs.HEAT_POINTS)]
+    damage = monstersconfigs.DAMAGES[random.randint(0, monstersconfigs.DAMAGES)]
+
+    monster = [name, hp, damage]
+
+    return monster
+
+
