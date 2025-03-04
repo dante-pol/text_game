@@ -13,16 +13,18 @@ def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
 
     has_first_go_player = True if random.randint(0, 100) > 60 else False
 
-    while (player_hp > 0) or (monster_hp > 0):
+    while (player_hp > 0) and (monster_hp > 0):
         if has_first_go_player:
             print("Герой атакует!")
             monster_hp -= player_damage
             has_first_go_player = False
+            print(f"{monster_name}осталось {monster_hp} здоровья")
         else:
             print("Монстр атакует!")
             player_hp -= monster_damage
             has_first_go_player = True
-        time.sleep(0.1)
+            print(f"игрок осталось {player_hp} здоровья")
+        time.sleep(0.5)
 
     if player_hp > 0:
         return "Игрок одержал победу!"

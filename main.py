@@ -9,7 +9,7 @@ damage_list = []
 health_list = []
 selection = []
 
-weapon = int(input("Выбор оружия\n1.обычный меч\n2.пистолет\n3.посох мага"))
+weapon = int(input("Выбор оружия\n1.обычный меч\n2.пистолет\n3.посох мага\n------"))
 selection.append(weapon)
 
 def count_damage(weapon):
@@ -63,4 +63,4 @@ player = create_players(health,sum_damage)
 
 monster = create_monster()
 
-fight_monster_melee(player, monster)
+print(fight_monster_melee(player, monster))
