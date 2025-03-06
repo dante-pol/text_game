@@ -1,6 +1,5 @@
 import time
 
-
 def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
     import random
 
@@ -33,19 +32,45 @@ def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
         return f"Монстр {monster_name} одержал победу!"
 
 
-def loot_box(items: list[str, ...]) -> None or str:
-    import random
+def loot_box(NAMES_ITEMS_DAMAGE,NAMES_ITEMS_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list):
     import time
+    import random
+    from enteties_factory import create_players
+    print("После победы над монстром вы находите сундук")
+    time.sleep(1)
 
-    is_lucky_loot = random.randint(0, 100) > 80
+    item_type = random.randint(0,1)
+    if item_type == 0:
+        item_health = 0
+        item_name = NAMES_ITEMS_DAMAGE[random.randint(0,5)]
+        item_damage = ITEMS_DAMAGE[random.randint(0,5)]
 
-    for i in range(0, 101, 1):
-        if not is_lucky_loot and i == 98:
-            return None
+        print("Открывается сундук")
+        time.sleep(1)
 
-        print(f"looting progress {i}%...")
-        time.sleep(0.15)
+        print(f"Вы находите {item_name} Количество урона:{item_damage}")
 
-    if is_lucky_loot:
-        item_index = random.randint(0, len(items))
-        return items[item_index]
+        
+    else:
+        item_damage = 0
+        item_name = NAMES_ITEMS_HEALTH[random.randint(0,3)]
+        item_health = ITEMS_HEALTH[random.randint(0,3)]
+
+        print("Открывается сундук")
+        time.sleep(1)
+
+        print(f"Вы находите {item_name} Количество жизней:{item_health}")
+
+        
+        
+
+    health_sum = health + item_health
+    health_list = []
+    health_list.append(health_sum)
+
+    sum_damage = damage + skill + item_damage
+    damage_list = []
+    damage_list.append(sum_damage)
+    player = create_players(health_sum,sum_damage)
+
+    return player
