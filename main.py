@@ -65,6 +65,10 @@ player = create_players(health,sum_damage)
 
 monster = create_monster()
 
+monster_ranged = create_ranged_monster()
+
 print(fight_monster_melee(player, monster)) 
 
-loot_box(NAMES_ITEM_DAMAGE,NAMES_ITEM_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list)
+player = loot_box(NAMES_ITEM_DAMAGE,NAMES_ITEM_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list)
+
+fight_monster_ranged(player, monster_ranged)
