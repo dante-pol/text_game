@@ -74,3 +74,7 @@ def loot_box(NAMES_ITEMS_DAMAGE,NAMES_ITEMS_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,dam
     player = create_players(health_sum,sum_damage)
 
     return player
+
+def lvl(current_level):
+    current_level =+ 1
+    return current_level
