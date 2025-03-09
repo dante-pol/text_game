@@ -31,8 +31,6 @@ def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
     if monster_hp > 0:
         print(f"Монстр {monster_name} одержал победу!")
         return exit(0)
-        
-
 
 def loot_box(NAMES_ITEMS_DAMAGE,NAMES_ITEMS_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list):
     import time
