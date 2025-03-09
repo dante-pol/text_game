@@ -2,7 +2,7 @@ def create_players(health_list,damage_list):
     player = [health_list,damage_list]
     return player
 
-def create_monster() -> list[str, int, int, int]:
+def create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
     import random
 
