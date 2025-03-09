@@ -2,7 +2,16 @@ def create_players(health_list,damage_list):
     player = [health_list,damage_list]
     return player
 
-def create_monster_melee() -> list[str, int, int, int]:
+def create_monster():
+    pass
+
+def create_boss():
+    pass
+
+def create_loot_box():
+    pass
+
+def __create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
     import random
 
@@ -15,7 +24,7 @@ def create_monster_melee() -> list[str, int, int, int]:
 
     return monster
 
-def create_ranged_monster():
+def __create_ranged_monster():
     import monstersconfigs
     import random
 
@@ -27,3 +36,16 @@ def create_ranged_monster():
 
     return ranged_monster
 
+def create_door(is_boss: bool = False):
+    import random
+
+    if is_boss:
+        return create_boss()
+
+    loot_box_probability = random.randint(0, 100)
+    monster_limit_right = 70
+
+    if loot_box_probability > monster_limit_right:
+        return create_loot_box()
+    else:
+        return create_monster()
