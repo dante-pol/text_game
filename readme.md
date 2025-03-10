@@ -83,3 +83,95 @@ def create_ranged_monster() -> list[str,int,int,int]:
 - int - уровень
 - int - здоровье
 - int - наносимый урон
+
+## Fight
+
+### Fight melee
+
+##### Описание
+Данная функция принимает на вход агента игрока и агента ближнего монстра в ходе функции они забирают друг у друга здоровье 
+
+##### Функция
+```Python
+def fight_monster_melee(player: list[str,int,int,int,int], monster: list[str, int,int, int]):
+    pass
+```
+в результате исполнения выводит победителя и количество оставшихся жизней
+
+### Fight ranged
+
+##### Описание
+Данная функция принимает на вход агента игрока и агента дальнего монстра в ходе функции они забирают друг у друга здоровье 
+
+##### Функция
+```Python
+def fight_monster_ranged(player: list[str,int,int,int,int], ranged_monster: list[str, int,int, int]):
+    pass
+```
+в результате исполнения выводит победителя и количество оставшихся жизней
+
+## loot
+
+### loot_box
+
+##### Описание
+Данная функция принимает на вход массивы с характеристиками предметов и рандомно выбирает однин из них
+
+##### Функция
+```Python
+def loot_box(NAMES_ITEMS_DAMAGE,NAMES_ITEMS_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list):
+    pass
+```
+в результате выводит имя предмета и его характеристики
+
+## character counter
+
+### damage 
+
+##### Описание
+выводит урон в зависимости от выбора
+
+##### Функция
+```Python
+def count_damage(weapon):
+    pass
+```
+в результате возвращает количество урона
+
+###  health
+
+##### Описание
+выводит жизни в зависимости от выбора
+
+##### Функция
+```Python
+def count_health(armor):
+    pass
+```
+в результате возвращает количество жизней
+
+### bonus damage
+
+##### Описание
+выводит бонусный урон в зависимости от выбора
+
+##### Функция
+```Python
+def count_bonus_damage(skill):
+    pass
+```
+в результате возвращает количество бонусного урона
+
+### bonus health
+
+##### Описание
+выводит бонусные жизни в зависимости от выбора
+
+##### Функция
+```Python
+def count_bonus_health(accessory):
+    pass
+```
+в результате возвращает количество бонусных жизней
+
+
