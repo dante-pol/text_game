@@ -1,5 +1,5 @@
-def create_players(health_list,damage_list):
-    player = [health_list,damage_list]
+def create_players(name:str, health:int,damage:int,bonus_damage:int,bonus_health:int):
+    player = [name,health,damage,bonus_damage,bonus_health]
     return player
 
 def create_monster() -> list[str, int, int, int]:
@@ -20,10 +20,11 @@ def create_ranged_monster():
     import random
 
     name_ranged = monstersconfigs.NAMES_RANGED[random.randint(0, len(monstersconfigs.NAMES_RANGED)-1)]
+    level_ranged = monstersconfigs.LEVEL_RANGED[random.randint(0, len(monstersconfigs.LEVEL_RANGED) - 1)]
     hp_ranged = monstersconfigs.HEAT_POINTS_RANGED[random.randint(0, len(monstersconfigs.HEAT_POINTS_RANGED)-1)]
     damage_ranged = monstersconfigs.DAMAGES_RANGED[random.randint(0, len(monstersconfigs.DAMAGES_RANGED)-1)]
 
-    ranged_monster = [name_ranged, hp_ranged, damage_ranged]
+    ranged_monster = [name_ranged, level_ranged,hp_ranged, damage_ranged]
 
     return ranged_monster
 

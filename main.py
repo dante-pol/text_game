@@ -4,14 +4,14 @@ from itemsconfigs import *
 #жизни от 0 до 100 урон от 1 до 15 бонус к урону от 1 - 7
 print("Приветствуем в нашей текстовой игре")
 
-print("Выберите свое снаряжение")
+player_name = input("Как вас зовут >>")
+print("Выберите свое снаряжение >> ")
 
 damage_list = []
 health_list = []
-selection = []
+
 
 weapon = int(input("Выбор оружия\n1.обычный меч\n2.пистолет\n3.посох мага\n------\n"))
-selection.append(weapon)
 
 def count_damage(weapon):
     if weapon == 1:
@@ -26,7 +26,6 @@ def count_damage(weapon):
     return damage
 
 armor = int(input("Выбор брони\n1.Латная броня\n2.бронежилет\n3.роба мага\n------\n"))
-selection.append(armor)
 
 def count_health(armor):
     if armor == 1:
@@ -41,7 +40,6 @@ def count_health(armor):
     return health
 
 skill = int(input("Выбор способности\n1.усиление физических показателей\n2.ускоренная перезарядка\n3.знание начальных заклинаний\n------\n"))
-selection.append(skill)
 
 def count_bonus_damage(skill):
     if skill == 1:
@@ -55,20 +53,22 @@ def count_bonus_damage(skill):
 
     return bonus_damage
 
+accessory = int(input("Выбор аксессуара\n1.кожаный рюкзак\n2.кобура\n3.кольцо маны\n------\n"))
+
+def count_bonus_damage(accessory):
+    if accessory == 1:
+        bonus_health = 5
+
+    if accessory == 2:
+        bonus_health = 7
+
+    if accessory == 3:
+        bonus_health = 3
+
+    return bonus_health
+
 damage = count_damage(weapon)
 sum_damage = damage + count_bonus_damage(skill)
 damage_list.append(sum_damage)
 
 health = count_health(armor)
-
-player = create_players(health,sum_damage)
-
-monster = create_monster()
-
-monster_ranged = create_ranged_monster()
-
-print(fight_monster_melee(player, monster)) 
-
-player = loot_box(NAMES_ITEM_DAMAGE,NAMES_ITEM_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list)
-
-fight_monster_ranged(player, monster_ranged)

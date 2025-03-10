@@ -46,9 +46,9 @@ def create_players(name:str, health:int,bonus_health:int,damage:int,bonus_damage
 
 - str - имя пользователя
 - int - количество жизней
-- int - количество бонусных жизней
 - int - количество урона
 - int - количетсво бонусного урона
+- int - количество бонусных жизней
 
 ### Melee
 
