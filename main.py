@@ -55,7 +55,7 @@ def count_bonus_damage(skill):
 
 accessory = int(input("Выбор аксессуара\n1.кожаный рюкзак\n2.кобура\n3.кольцо маны\n------\n"))
 
-def count_bonus_damage(accessory):
+def count_bonus_health(accessory):
     if accessory == 1:
         bonus_health = 5
 
@@ -68,7 +68,9 @@ def count_bonus_damage(accessory):
     return bonus_health
 
 damage = count_damage(weapon)
-sum_damage = damage + count_bonus_damage(skill)
-damage_list.append(sum_damage)
-
 health = count_health(armor)
+bonus_damage = count_bonus_damage(skill)
+bonus_health = count_bonus_health(accessory)
+
+
+
