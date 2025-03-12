@@ -1,10 +1,13 @@
 import time
 
-def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
+def fight_monster_melee(player:list,monster:list):
     import random
 
-    player_hp = player[0]
-    player_damage = player[1]
+    player_name = player[0]
+    player_hp = player[1]
+    player_damage = player[2]
+    player_bonus_damage = player[3]
+    player_bonus_health = player[4]
 
     monster_name = monster[0]
     monster_hp = monster[1]
@@ -15,12 +18,12 @@ def fight_monster_melee(player: list[int, int], monster: list[str, int, int]):
     while (player_hp > 0) and (monster_hp > 0):
         if has_first_go_player:
             print("Герой атакует!")
-            monster_hp -= player_damage
+            monster_hp -= player_damage + player_bonus_damage
             has_first_go_player = False
             print(f"{monster_name} осталось {monster_hp} здоровья")
         else:
             print("Монстр атакует!")
-            player_hp -= monster_damage
+            player_hp + player_bonus_health -= monster_damage
             has_first_go_player = True
             print(f"игрок осталось {player_hp} здоровья")
         time.sleep(0.5)
@@ -77,12 +80,15 @@ def lvl(current_level):
     current_level =+ 1
     return current_level
 
-def fight_monster_ranged(player: list[int, int], ranged_monster: list[str, int, int]):
+def fight_monster_ranged(player:list, ranged_monster:list):
     import time
     import random
     import monstersconfigs
-    player_hp = player[0]
-    player_damage = player[1]
+    player_name = player[0]
+    player_hp = player[1]
+    player_damage = player[2]
+    player_bonus_damage = player[3]
+    player_bonus_health = player[4]
 
     monster_ranged_name = ranged_monster[0]
     monster_ranged_hp = ranged_monster[1]
@@ -97,12 +103,12 @@ def fight_monster_ranged(player: list[int, int], ranged_monster: list[str, int, 
                 has_first_go_player = False
                 continue
             print("Герой атакует!")
-            monster_ranged_hp -= player_damage
+            monster_ranged_hp -= player_damage + player_bonus_damage
             has_first_go_player = False
             print(f"{monster_ranged_name} осталось {monster_ranged_hp} здоровья")
         else:
             print("Монстр атакует!")
-            player_hp -= monster_ranged_damage
+            player_hp + player_bonus_health -= monster_ranged_damage
             has_first_go_player = True
             print(f"игрок осталось {player_hp} здоровья")
         time.sleep(0.5)
