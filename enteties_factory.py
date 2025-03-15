@@ -3,7 +3,16 @@ def create_players(name:str, health:int,damage:int,bonus_damage:int,bonus_health
     return player
 
 def create_monster():
-    pass
+    import random
+
+    monster_probability = random.randint(0,100)
+    melee_probability = 50
+
+    if monster_probability <= melee_probability:
+        return __create_monster_melee()
+    
+    else:
+        return __create_ranged_monster()
 
 def create_boss():
     pass
