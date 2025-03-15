@@ -6,9 +6,9 @@ def create_monster():
     import random
 
     monster_probability = random.randint(0,100)
-    melee_limit = 50
+    melee_probability = 50
 
-    if monster_probability <= melee_limit:
+    if monster_probability <= melee_probability:
         return __create_monster_melee()
     
     else:
