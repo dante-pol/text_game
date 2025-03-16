@@ -1,5 +1,6 @@
-def create_players(name:str, health:int,damage:int,bonus_damage:int,bonus_health:int):
-    player = [name,health,damage,bonus_damage,bonus_health]
+def create_players(name,player_class):
+    import playerconfigs
+    player = [name,playerconfigs.DAMAGE[player_class],playerconfigs.HEALTH[player_class],playerconfigs.BONUS_DAMAGE[player_class],playerconfigs.BONUS_HEALTH[player_class]]
     return player
 
 def create_monster():
