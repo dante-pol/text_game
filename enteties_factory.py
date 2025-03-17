@@ -18,8 +18,10 @@ def create_monster():
 def create_boss():
     pass
 
-def create_loot_box():
-    pass
+def create_loot_box(player):
+    from mechanics import loot_box
+    loot_box(player)
+    return player
 
 def __create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
