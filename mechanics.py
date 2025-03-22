@@ -38,44 +38,35 @@ def fight_monster_melee(player:list,monster:list):
         print(f"Монстр {monster_name} одержал победу!")
         return exit(0)
 
-def loot_box(player):
+def loot_box(current_player):
     import time
     import random
     from enteties_factory import create_players
-    import monstersconfigs
+    from items_factory import generate_items
+
 
     print("После победы над монстром вы находите сундук")
     time.sleep(1)
 
-    item_type = random.randint(0,1)
-    if item_type == 0:
-        item_name = monstersconfigs.NAMES_ITEMS_DAMAGE[random.randint(0,5)]
-        item_damage = monstersconfigs.ITEMS_DAMAGE[random.randint(0,5)]
+    items = generate_items()
+    choice = int(input(f"в сундуке 4 предмета {items[0]},{items[1],items[2]},{items[3]},но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
 
-        print("Открывается сундук")
-        time.sleep(1)
-
-        print(f"Вы находите {item_name} Количество урона:{item_damage}")
-
-    if item_type == 1:
-        item_name = monstersconfigs.NAMES_ITEMS_HEALTH[random.randint(0,3)]
-        item_health = monstersconfigs.ITEMS_HEALTH[random.randint(0,3)]
-
-        print("Открывается сундук")
-        time.sleep(1)
-
-        print(f"Вы находите {item_name} Количество жизней:{item_health}")
-        time.sleep(3)
-
-    health = player[0][1] + item_health
-    damage = player[0][0] + player[0][2] + item_damage
-    player = create_players(damage,health,player[0][2],player[0][3])
-
+    if choice == 1:
+        item = items[0]
+    if choice == 2:
+        item = items[1]
+    if choice == 3:
+        item == items[2]
+    if choice == 4:
+        item = items[3]
+    if item[0][0] == "health":
+        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+    if item[0][0] == "damage":
+        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+    if item[0][0] == "health_bonus":
+        player = [current_player[0][1],current_player[0][2],current_player[0][3],current_player[0][4]]
+    
     return player
-
-def lvl(current_level):
-    current_level =+ 1
-    return current_level
 
 def fight_monster_ranged(player:list, ranged_monster:list):
     import time
