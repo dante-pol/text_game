@@ -3,6 +3,24 @@ def create_players(name,player_class):
     player = [name,playerconfigs.DAMAGE[player_class],playerconfigs.HEALTH[player_class],playerconfigs.BONUS_DAMAGE[player_class],playerconfigs.BONUS_HEALTH[player_class]]
     return player
 
+def create_stage():
+    import random
+    import roomconfigs as rc
+
+    stage_index = random.randint(0,len(rc.stages)-1)
+    config = rc.stages[stage_index]
+    stage = []
+
+    for room in config:
+        if room == rc.MONSTER:
+            stage.append(create_monster())
+
+        elif room == rc.LOOTBOX:
+            stage.append(create_loot_box())
+
+        elif room == rc.BOSS:
+            stage.append(create_boss())
+            
 def create_monster():
     import random
 
