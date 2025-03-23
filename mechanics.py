@@ -53,16 +53,25 @@ def loot_box(current_player):
 
     if choice == 1:
         item = items[0]
+
     if choice == 2:
         item = items[1]
+
     if choice == 3:
         item == items[2]
+
     if choice == 4:
         item = items[3]
+
+    if choice == 5:
+        return current_player
+    
     if item[0][0] == "health":
         player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+
     if item[0][0] == "damage":
         player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+
     if item[0][0] == "health_bonus":
         player = [current_player[0][1],current_player[0][2],current_player[0][3],current_player[0][4]]
     
