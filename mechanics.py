@@ -38,50 +38,44 @@ def fight_monster_melee(player:list,monster:list):
         print(f"Монстр {monster_name} одержал победу!")
         return exit(0)
 
-def loot_box(NAMES_ITEMS_DAMAGE,NAMES_ITEMS_HEALTH,ITEMS_DAMAGE,ITEMS_HEALTH,damage,skill,damage_list,health,health_list):
+def loot_box(current_player):
     import time
     import random
     from enteties_factory import create_players
+    from items_factory import generate_items
+
 
     print("После победы над монстром вы находите сундук")
     time.sleep(1)
 
-    item_type = random.randint(0,1)
-    if item_type == 0:
-        item_health = 0
-        item_name = NAMES_ITEMS_DAMAGE[random.randint(0,5)]
-        item_damage = ITEMS_DAMAGE[random.randint(0,5)]
+    items = generate_items()
+    choice = int(input(f"в сундуке 4 предмета {items[0]},{items[1],items[2]},{items[3]},но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
 
-        print("Открывается сундук")
-        time.sleep(1)
+    if choice == 1:
+        item = items[0]
 
-        print(f"Вы находите {item_name} Количество урона:{item_damage}")
+    if choice == 2:
+        item = items[1]
 
-    if item_type == 1:
-        item_damage = 0
-        item_name = NAMES_ITEMS_HEALTH[random.randint(0,3)]
-        item_health = ITEMS_HEALTH[random.randint(0,3)]
+    if choice == 3:
+        item == items[2]
 
-        print("Открывается сундук")
-        time.sleep(1)
+    if choice == 4:
+        item = items[3]
 
-        print(f"Вы находите {item_name} Количество жизней:{item_health}")
-        time.sleep(3)
+    if choice == 5:
+        return current_player
+    
+    if item[0][0] == "health":
+        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
 
-    health_sum = health + item_health
-    health_list = []
-    health_list.append(health_sum)
+    if item[0][0] == "damage":
+        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
 
-    sum_damage = damage + skill + item_damage
-    damage_list = []
-    damage_list.append(sum_damage)
-    player = create_players(health_sum,sum_damage)
-
+    if item[0][0] == "health_bonus":
+        player = [current_player[0][1],current_player[0][2],current_player[0][3],current_player[0][4]]
+    
     return player
-
-def lvl(current_level):
-    current_level =+ 1
-    return current_level
 
 def fight_monster_ranged(player:list, ranged_monster:list):
     import time

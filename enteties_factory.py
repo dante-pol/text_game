@@ -1,5 +1,6 @@
-def create_players(name:str, health:int,damage:int,bonus_damage:int,bonus_health:int):
-    player = [name,health,damage,bonus_damage,bonus_health]
+def create_players(name,player_class):
+    import playerconfigs
+    player = [name,playerconfigs.DAMAGE[player_class],playerconfigs.HEALTH[player_class],playerconfigs.BONUS_DAMAGE[player_class],playerconfigs.BONUS_HEALTH[player_class]]
     return player
 
 def create_monster():
@@ -17,8 +18,10 @@ def create_monster():
 def create_boss():
     pass
 
-def create_loot_box():
-    pass
+def create_loot_box(player):
+    from mechanics import loot_box
+    new_player = loot_box(player)
+    return new_player
 
 def __create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
