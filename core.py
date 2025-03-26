@@ -20,7 +20,7 @@ def gameloop():
             player_class = class_selection()
 
             player = create_players(player_name,player_class)
-
+        
 
 def dispose():
     print("Пока!")

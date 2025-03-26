@@ -34,12 +34,24 @@ def create_monster():
         return __create_ranged_monster()
 
 def create_boss():
-    pass
+    boss = __create_monster_boss()
+    return boss
 
 def create_loot_box(player):
     from mechanics import loot_box
     new_player = loot_box(player)
     return new_player
+
+def __create_monster_boss():
+    import monstersconfigs as mc
+    import random 
+    name = mc.NAMES_BOSS[random.randint(0,len(mc.NAMES_BOSS)- 1)]
+    hp = mc.HEAT_POINTS_BOSS[random.randint(0, len(mc.HEAT_POINTS_BOSS) - 1)]
+    damage = mc.DAMAGE_BOSS[random.randint(0, len(mc.DAMAGE_BOSS) - 1)]
+
+    boss = [name,hp,damage]
+
+    return boss
 
 def __create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
@@ -67,16 +79,3 @@ def __create_ranged_monster():
 
     return ranged_monster
 
-def create_door(is_boss: bool = False):
-    import random
-
-    if is_boss:
-        return create_boss()
-
-    loot_box_probability = random.randint(0, 100)
-    monster_limit_right = 70
-
-    if loot_box_probability > monster_limit_right:
-        return create_loot_box()
-    else:
-        return create_monster()
