@@ -1,5 +1,6 @@
 from mechanics import class_selection
 from enteties_factory import create_players
+from enteties_factory import create_stage
 def bootstrap():
     print("Приветствуем в нашей текстовой игре")
     print("1. Новая игра\n2. Продолжить игру\n3. Выйти")
@@ -20,7 +21,8 @@ def gameloop():
             player_class = class_selection()
 
             player = create_players(player_name,player_class)
-        
+        for i in range(0,4,1):
+            create_stage(player)
 
 def dispose():
     print("Пока!")
