@@ -1,7 +1,8 @@
 import time
 
 def class_selection():
-   player_class = int(input("Выберите свой класс \nмаг 0 чтоб выбрать(8 урона 60 жизней 5 бонусного урона 6 бонусных жизней)\n---------------\nрыцарь 1 чтоб выбрать(5 урона 80 жизней 3 бонусного урона 8 бонусных жизней)\n---------------\nохотник 2 чтоб выбрать(6 урона 75 жизней 3 бонусного урона 6 бонусных жизней)\n---------------\nассасин 3 чтоб выбрать(8 урона 65 жизней 3 бонусного урона 8 бонусных жизней)\n---------------\nпаладин 4 чтоб выбрать(3 урона 90 жизней 4 бонусного урона 6 бонусных жизней)"))
+   print("Выберите свой класс \nмаг 0 чтоб выбрать(8 урона 60 жизней 5 бонусного урона 6 бонусных жизней)\n---------------\nрыцарь 1 чтоб выбрать(5 урона 80 жизней 3 бонусного урона 8 бонусных жизней)\n---------------\nохотник 2 чтоб выбрать(6 урона 75 жизней 3 бонусного урона 6 бонусных жизней)\n---------------\nассасин 3 чтоб выбрать(8 урона 65 жизней 3 бонусного урона 8 бонусных жизней)\n---------------\nпаладин 4 чтоб выбрать(3 урона 90 жизней 4 бонусного урона 6 бонусных жизней)")
+   player_class = int(input())
    return player_class
 
 def fight_monster_melee(player:list,monster:list):
@@ -42,17 +43,18 @@ def fight_monster_melee(player:list,monster:list):
         print(f"Монстр {monster_name} одержал победу!")
         return exit(0)
 
-def loot_box(current_player):
-    import time
-    import random
-    from enteties_factory import create_players
+def loot_box():
     from items_factory import generate_items
 
+    items = generate_items()
 
-    print("После победы над монстром вы находите сундук")
+    return items
+
+def open_loot_box(current_player,items):
+    import time
+    print("Вы находите сундук")
     time.sleep(1)
 
-    items = generate_items()
     choice = int(input(f"в сундуке 4 предмета {items[0]}\n,{items[1]}\n,{items[2]}\n,{items[3]}\n,но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
 
     if choice == 1:
@@ -78,13 +80,12 @@ def loot_box(current_player):
 
     if item[0][0] == "health_bonus":
         player = [current_player[0][1],current_player[0][2],current_player[0][3],current_player[0][4]]
-    
-    return player
 
 def fight_monster_ranged(player:list, ranged_monster:list):
     import time
     import random
     import monstersconfigs
+
     player_name = player[0]
     player_hp = player[1]
     player_damage = player[2]

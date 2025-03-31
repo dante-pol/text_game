@@ -21,7 +21,8 @@ def gameloop():
             player_class = class_selection()
 
             player = create_players(player_name,player_class)
-        for i in range(0,4,1):
+            stages = 5
+        for i in range(0,stages,1):
             create_stage(player)
 
 def dispose():

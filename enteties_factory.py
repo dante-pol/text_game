@@ -1,6 +1,10 @@
 def create_players(name,player_class):
     import playerconfigs
-    player = [name,playerconfigs.DAMAGE[player_class],playerconfigs.HEALTH[player_class],playerconfigs.BONUS_DAMAGE[player_class],playerconfigs.BONUS_HEALTH[player_class]]
+    damage =playerconfigs.DAMAGE[player_class]
+    health = playerconfigs.HEALTH[player_class]
+    bonus_damage =playerconfigs.BONUS_DAMAGE[player_class]
+    bonus_heath =playerconfigs.BONUS_HEALTH[player_class]
+    player = [name,damage,health,bonus_damage,bonus_heath]
     return player
 
 def create_stage(player):
@@ -39,7 +43,7 @@ def create_boss():
 
 def create_loot_box(player):
     from mechanics import loot_box
-    new_player = loot_box(player)
+    new_player = loot_box()
     return new_player
 
 def __create_monster_boss():
