@@ -72,19 +72,20 @@ def open_loot_box(current_player,items):
     if choice == 5:
         return current_player
     
-    if item[0][0] == "health":
-        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+    if item[0] == "health":
+        player = [current_player[0],current_player[1],item[2],current_player[3],current_player[4]]
 
-    if item[0][0] == "damage":
-        player = [current_player[0][1],item[0,1],current_player[0][3],current_player[0][4]]
+    if item[0] == "damage":
+        player = [current_player[0],item[2],current_player[3],current_player[4]]
 
-    if item[0][0] == "health_bonus":
-        player = [current_player[0][1],current_player[0][2],current_player[0][3],current_player[0][4]]
+    if item[0] == "health_bonus":
+        player = [current_player[0],current_player[1],current_player[2],current_player[3],item[2]]
+
+    return player
 
 def fight_monster_ranged(player:list, ranged_monster:list):
     import time
     import random
-    import monstersconfigs
 
     player_name = player[0]
     player_hp = player[1]

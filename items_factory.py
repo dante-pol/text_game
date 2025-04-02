@@ -2,12 +2,10 @@ import itemsconfigs
 import random
 
 def generate_items():
-
-    
-
+    num_of_items = 3
     items = []
 
-    for i in range(0,4,1):
+    for i in range(0,num_of_items,1):
         item_type = random.randint(0,2)
 
         if item_type == 0:

@@ -17,25 +17,31 @@ def create_stage(player):
 
     for room in config:
         if room == rc.MONSTER:
-            stage.append(create_monster())
-
+            id, monster = create_monster()
+            if id == 3:
+              stage.append(rc.MELEE)  
+            else:
+                stage.append(rc.RANGE)
+            
+    
         elif room == rc.LOOTBOX:
-            stage.append(create_loot_box(player))
+            stage.append(rc.LOOTBOX,create_loot_box(player))
 
         elif room == rc.BOSS:
-            stage.append(create_boss())
-            
+            stage.append(rc.BOSS,create_boss())
+    return stage
 def create_monster():
     import random
+    import roomconfigs as rc
 
     monster_probability = random.randint(0,100)
     melee_probability = 50
 
     if monster_probability <= melee_probability:
-        return __create_monster_melee()
+        return rc.MELEE,__create_monster_melee()
     
     else:
-        return __create_ranged_monster()
+        return rc.RANGE,__create_ranged_monster()
 
 def create_boss():
     boss = __create_monster_boss()
