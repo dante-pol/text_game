@@ -53,7 +53,7 @@ def loot_box(current_player):
     time.sleep(1)
 
     items = generate_items()
-    choice = int(input(f"в сундуке 4 предмета {items[0]}\n,{items[1]}\n,{items[2]}\n,{items[3]}\n,но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
+    choice = int(input(f"в сундуке 4 предмета {items[0]},{items[1],items[2]},{items[3]},но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
 
     if choice == 1:
         item = items[0]
