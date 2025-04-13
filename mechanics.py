@@ -119,3 +119,6 @@ def fight_monster_ranged(player:list, ranged_monster:list):
     if monster_ranged_hp > 0:
         print(f"Монстр {monster_ranged_name} одержал победу!")
         return exit(0)
+
+def fight_boss(player,boss):
+    pass
