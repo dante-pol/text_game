@@ -83,8 +83,8 @@ def fight_monster_ranged(player:list, ranged_monster:list):
     import random
 
     player_name = player[0]
-    player_hp = player[1]
-    player_damage = player[2]
+    player_damage = player[1]
+    player_hp = player[2]
     player_bonus_damage = player[3]
     player_bonus_hp = player[4]
     
@@ -92,8 +92,8 @@ def fight_monster_ranged(player:list, ranged_monster:list):
     player_health_overall = player_hp + player_bonus_hp
 
     monster_ranged_name = ranged_monster[0]
-    monster_ranged_hp = ranged_monster[1]
-    monster_ranged_damage = ranged_monster[2]
+    monster_ranged_hp = ranged_monster[2]
+    monster_ranged_damage = ranged_monster[3]
 
     has_first_go_player = True if random.randint(0, 100) > 60 else False
 
@@ -111,15 +111,16 @@ def fight_monster_ranged(player:list, ranged_monster:list):
             print("Монстр атакует!")
             player_health_overall -= monster_ranged_damage
             has_first_go_player = True
-            print(f"{player_name} осталось {player_hp} здоровья")
+            print(f"{player_name} осталось {player_health_overall} здоровья")
         time.sleep(0.5)
 
-    if player_hp > 0:
-        return f"{player_name} одержал победу!"
+    if player_health_overall > 0:
+        print(f"{player_name} одержал победу!")
+        return True
 
     if monster_ranged_hp > 0:
         print(f"Монстр {monster_ranged_name} одержал победу!")
-        return exit(0)
+        return False
 
 def fight_boss(player,boss):
     pass
