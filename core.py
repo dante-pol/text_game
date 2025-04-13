@@ -22,8 +22,9 @@ def gameloop():
 
             player = create_players(player_name,player_class)
             stages = 5
+            stages_list = []
         for i in range(0,stages,1):
-            create_stage(player)
+            stages_list.append(create_stage(player))
 
 def dispose():
     print("Пока!")

@@ -43,12 +43,6 @@ def fight_monster_melee(player:list,monster:list):
         print(f"Монстр {monster_name} одержал победу!")
         return exit(0)
 
-def loot_box():
-    from items_factory import generate_items
-
-    items = generate_items()
-
-    return items
 
 def open_loot_box(current_player,items):
     import time

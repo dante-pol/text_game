@@ -18,14 +18,14 @@ def create_stage(player):
     for room in config:
         if room == rc.MONSTER:
             if id == 3:
-              stage = [rc.MELEE,__create_monster_melee]
+              stage = [rc.MELEE,__create_monster_melee()]
 
             else:
-                stage = [rc.RANGE,__create_ranged_monster]
+                stage = [rc.RANGE,__create_ranged_monster()]
             
     
         elif room == rc.LOOTBOX:
-            stage = [rc.LOOTBOX,create_loot_box(player)]
+            stage = [rc.LOOTBOX,create_loot_box()]
 
         elif room == rc.BOSS:
             stage = [rc.BOSS,create_boss()]
