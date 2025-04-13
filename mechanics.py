@@ -50,8 +50,8 @@ def open_loot_box(current_player,items):
     print("Вы находите сундук")
     time.sleep(1)
 
-    choice = int(input(f"в сундуке 4 предмета {items[0]}\n,{items[1]}\n,{items[2]}\n,{items[3]}\n,но вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>"))
-
+    print(f"в сундуке 4 предмета {items[0]},\n{items[1]},\n{items[2]},\n{items[3]},\nно вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>")
+    choice = int(input())
     if choice == 1:
         item = items[0]
 
