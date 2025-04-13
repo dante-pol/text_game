@@ -2,20 +2,20 @@ import itemsconfigs
 import random
 
 def generate_items():
-    num_of_items = 3
+    num_of_items = 4
     items = []
 
     for i in range(0,num_of_items,1):
         item_type = random.randint(0,2)
 
         if item_type == 0:
-            item = create_item_health
+            item = create_item_health()
 
         elif item_type == 1:
-            item = create_item_damage
+            item = create_item_damage()
 
         else:
-            item = create_item_bonus_health
+            item = create_item_bonus_health()
         items.append(item)
     return items
 
