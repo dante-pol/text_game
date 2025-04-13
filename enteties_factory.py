@@ -1,6 +1,10 @@
 def create_players(name,player_class):
     import playerconfigs
-    player = [name,playerconfigs.DAMAGE[player_class],playerconfigs.HEALTH[player_class],playerconfigs.BONUS_DAMAGE[player_class],playerconfigs.BONUS_HEALTH[player_class]]
+    damage =playerconfigs.DAMAGE[player_class]
+    health = playerconfigs.HEALTH[player_class]
+    bonus_damage =playerconfigs.BONUS_DAMAGE[player_class]
+    bonus_heath =playerconfigs.BONUS_HEALTH[player_class]
+    player = [name,damage,health,bonus_damage,bonus_heath]
     return player
 
 def create_stage(player):
@@ -13,34 +17,42 @@ def create_stage(player):
 
     for room in config:
         if room == rc.MONSTER:
-            stage.append(create_monster())
+            if id == 3:
+              stage.append([rc.MELEE,__create_monster_melee()])
 
+            else:
+                stage.append([rc.RANGE,__create_ranged_monster()])
+            
+    
         elif room == rc.LOOTBOX:
-            stage.append(create_loot_box(player))
+            stage.append([rc.LOOTBOX,create_loot_box()])
 
         elif room == rc.BOSS:
-            stage.append(create_boss())
-            
+            stage.append([rc.BOSS,create_boss()])
+
+    return stage
+
 def create_monster():
     import random
+    import roomconfigs as rc
 
     monster_probability = random.randint(0,100)
     melee_probability = 50
 
     if monster_probability <= melee_probability:
-        return __create_monster_melee()
+        return [rc.MELEE,__create_monster_melee()]
     
     else:
-        return __create_ranged_monster()
+        return [rc.RANGE,__create_ranged_monster()]
 
 def create_boss():
     boss = __create_monster_boss()
     return boss
 
-def create_loot_box(player):
-    from mechanics import loot_box
-    new_player = loot_box(player)
-    return new_player
+def create_loot_box():
+    import items_factory
+    loot_box = items_factory.generate_items()
+    return loot_box
 
 def __create_monster_boss():
     import monstersconfigs as mc
