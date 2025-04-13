@@ -9,8 +9,8 @@ def fight_monster_melee(player:list,monster:list):
     import random
 
     player_name = player[0]
-    player_hp = player[1]
-    player_damage = player[2]
+    player_damage = player[1]
+    player_hp = player[2]
     player_bonus_damage = player[3]
     player_bonus_hp = player[4]
 
@@ -18,8 +18,8 @@ def fight_monster_melee(player:list,monster:list):
     player_health_overall = player_hp + player_bonus_hp
 
     monster_name = monster[0]
-    monster_hp = monster[1]
-    monster_damage = monster[2]
+    monster_hp = monster[2]
+    monster_damage = monster[3]
 
     has_first_go_player = True if random.randint(0, 100) > 60 else False
 
@@ -33,15 +33,16 @@ def fight_monster_melee(player:list,monster:list):
             print("Монстр атакует!")
             player_health_overall -= monster_damage
             has_first_go_player = True
-            print(f"{player_name} осталось {player_hp} здоровья")
+            print(f"{player_name} осталось {player_health_overall} здоровья")
         time.sleep(0.5)
 
-    if player_hp > 0:
-        return f"{player_name} одержал победу!"
+    if player_health_overall > 0:
+        print(f"{player_name} одержал победу!")
+        return True
 
     if monster_hp > 0:
         print(f"Монстр {monster_name} одержал победу!")
-        return exit(0)
+        return False
 
 
 def open_loot_box(current_player,items):
