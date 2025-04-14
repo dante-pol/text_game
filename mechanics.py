@@ -28,10 +28,14 @@ def fight_monster_melee(player:list,monster:list):
             print(f"{player_name} атакует!")
             monster_hp -= player_damage_overall
             has_first_go_player = False
+            if monster_hp < 0:
+                monster_hp == 0
             print(f"{monster_name} осталось {monster_hp} здоровья")
         else:
             print("Монстр атакует!")
             player_health_overall -= monster_damage
+            if player_health_overall < 0:
+                player_health_overall = 0
             has_first_go_player = True
             print(f"{player_name} осталось {player_health_overall} здоровья")
         time.sleep(0.5)
@@ -99,18 +103,22 @@ def fight_monster_ranged(player:list, ranged_monster:list):
 
     while (player_health_overall > 0) and (monster_ranged_hp > 0):
         if has_first_go_player:
-            if random.randint(0,100) >= 70:
+            if random.randint(0,100) >= 80:
                 print(f"{player_name} атакует... но промахивается!")
                 has_first_go_player = False
                 continue
             print(f"{player_name} атакует!")
             monster_ranged_hp -= player_damage_overall
             has_first_go_player = False
+            if monster_ranged_hp < 0:
+                monster_ranged_hp = 0
             print(f"{monster_ranged_name} осталось {monster_ranged_hp} здоровья")
         else:
             print("Монстр атакует!")
             player_health_overall -= monster_ranged_damage
             has_first_go_player = True
+            if player_health_overall < 0:
+                player_health_overall = 0
             print(f"{player_name} осталось {player_health_overall} здоровья")
         time.sleep(0.5)
 
