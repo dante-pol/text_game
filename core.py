@@ -33,10 +33,19 @@ def gameloop():
             is_gaming = False
             continue
         is_searching = True
+        stage_counter = 0
         for stage in stages_list:#stage_list[[stage],[stage],[stage]]
+            if is_gaming == True and stage_counter == 0:
+                print(f"{'-'*20}\nоткрываем первый этаж...\n{'-'*20}")
+
+            if is_gaming == True and stage_counter > 0:
+                print(f"{'-'*20}\nЭтаж пройден\n{'-'*20}")
+                time.sleep(4)
+                print(f"{'-'*20}\nоткрываем новый этаж...\n{'-'*20}")
+
             if not is_searching:
                 break 
-            print(f"{'-'*20}\nоткрываем этаж...\n{'-'*20}")
+            
             for room in stage:#stage[[]]
                 if room[0] == LOOTBOX:
                     open_loot_box(player,room[1])
@@ -57,10 +66,12 @@ def gameloop():
                         is_gaming = False
                         is_searching = False
                         break
+
                 time.sleep(2)
-            print(f"{'-'*20}\nЭтаж пройден\n{'-'*20}")
-            time.sleep(5)
-                
+                print(f"{'-'*20}\nКомната пройдена\n{'-'*20}")
+            time.sleep(2)
+            stage_counter+=1
+        
         
 
 def dispose():
