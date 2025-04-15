@@ -7,7 +7,7 @@ def create_players(name,player_class):
     player = [name,damage,health,bonus_damage,bonus_heath]
     return player
 
-def create_stage(player):
+def create_stage():
     import random
     import roomconfigs as rc
     
@@ -17,10 +17,11 @@ def create_stage(player):
 
     for room in config:
         if room == rc.MONSTER:
+            id = random.randint(3,4)
             if id == 3:
               stage.append([rc.MELEE,__create_monster_melee()])
 
-            else:
+            if id == 4:
                 stage.append([rc.RANGE,__create_ranged_monster()])
             
     
