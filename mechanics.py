@@ -29,7 +29,7 @@ def fight_monster_melee(player:list,monster:list):
             monster_hp -= player_damage_overall
             has_first_go_player = False
             if monster_hp < 0:
-                monster_hp == 0
+                monster_hp = 0
             print(f"{monster_name} осталось {monster_hp} здоровья")
         else:
             print("Монстр атакует!")
@@ -51,10 +51,10 @@ def fight_monster_melee(player:list,monster:list):
 
 def open_loot_box(current_player,items):
     import time
-    print("Вы находите сундук")
+    print("Вы открываете сундук")
     time.sleep(1)
 
-    print(f"в сундуке 4 предмета {items[0]},\n{items[1]},\n{items[2]},\n{items[3]},\nно вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор) >>")
+    print(f"в сундуке 4 предмета\n{'-'*20}\n{items[0]}\n{'-'*20}\n{items[1]}\n{'-'*20}\n{items[2]}\n{'-'*20}\n{items[3]}\nно вы можете выбрать только один(выберите номер предмета,5 чтобы пропустить выбор)")
     choice = int(input())
     if choice == 1:
         item = items[0]
@@ -131,4 +131,49 @@ def fight_monster_ranged(player:list, ranged_monster:list):
         return False
 
 def fight_boss(player,boss):
-    pass
+    import time
+    import random
+
+    player_name = player[0]
+    player_damage = player[1]
+    player_hp = player[2]
+    player_bonus_damage = player[3]
+    player_bonus_hp = player[4]
+    
+    player_damage_overall = player_damage + player_bonus_damage
+    player_health_overall = player_hp + player_bonus_hp
+
+    boss_name = boss[0]
+    boss_hp = boss[1]
+    boss_damage = boss[2]
+
+    has_first_go_player = True if random.randint(0, 100) > 60 else False
+
+    while (player_health_overall > 0) and (boss_hp > 0):
+        if has_first_go_player:
+            print(f"{player_name} атакует!")
+            boss_hp -= player_damage_overall
+            has_first_go_player = False
+
+            if boss_hp < 0:
+                boss_hp = 0
+            print(f"{boss_name} осталось {boss_hp} здоровья")
+
+        else:
+            print("Монстр атакует!")
+            player_health_overall -= boss_damage
+            has_first_go_player = True
+
+            if player_health_overall < 0:
+                player_health_overall = 0
+            print(f"{player_name} осталось {player_health_overall} здоровья")
+
+        time.sleep(0.5)
+
+    if player_health_overall > 0:
+        print(f"{player_name} одержал победу!")
+        return True
+
+    if boss_hp > 0:
+        print(f"Монстр {boss_name} одержал победу!")
+        return False
