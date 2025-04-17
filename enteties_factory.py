@@ -21,7 +21,7 @@ def create_stage():
             if id == 3:
               stage.append([rc.MELEE,__create_monster_melee()])
 
-            if id == 4:
+            elif id == 4:
                 stage.append([rc.RANGE,__create_ranged_monster()])
             
     
