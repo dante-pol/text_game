@@ -1,37 +1,14 @@
-def create_players(name,player_class):
+def create_player(name,player_class):
     import playerconfigs
+
     damage =playerconfigs.DAMAGE[player_class]
     health = playerconfigs.HEALTH[player_class]
     bonus_damage =playerconfigs.BONUS_DAMAGE[player_class]
     bonus_heath =playerconfigs.BONUS_HEALTH[player_class]
     player = [name,damage,health,bonus_damage,bonus_heath]
+
     return player
 
-def create_stage():
-    import random
-    import roomconfigs as rc
-    
-    stage_index = random.randint(0,len(rc.stages)-1)
-    config = rc.stages[stage_index]
-    stage = []
-
-    for room in config:
-        if room == rc.MONSTER:
-            id = random.randint(3,4)
-            if id == 3:
-              stage.append([rc.MELEE,__create_monster_melee()])
-
-            elif id == 4:
-                stage.append([rc.RANGE,__create_ranged_monster()])
-            
-    
-        elif room == rc.LOOTBOX:
-            stage.append([rc.LOOTBOX,create_loot_box()])
-
-        elif room == rc.BOSS:
-            stage.append([rc.BOSS,create_boss()])
-
-    return stage
 
 def create_monster():
     import random
@@ -46,18 +23,22 @@ def create_monster():
     else:
         return [rc.RANGE,__create_ranged_monster()]
 
+
 def create_boss():
     boss = __create_monster_boss()
     return boss
+
 
 def create_loot_box():
     import items_factory
     loot_box = items_factory.generate_items()
     return loot_box
 
+
 def __create_monster_boss():
     import monstersconfigs as mc
     import random 
+
     name = mc.NAMES_BOSS[random.randint(0,len(mc.NAMES_BOSS)- 1)]
     hp = mc.HEAT_POINTS_BOSS[random.randint(0, len(mc.HEAT_POINTS_BOSS) - 1)]
     damage = mc.DAMAGE_BOSS[random.randint(0, len(mc.DAMAGE_BOSS) - 1)]
@@ -65,6 +46,7 @@ def __create_monster_boss():
     boss = [name,hp,damage]
 
     return boss
+
 
 def __create_monster_melee() -> list[str, int, int, int]:
     import monstersconfigs
@@ -78,6 +60,7 @@ def __create_monster_melee() -> list[str, int, int, int]:
     monster = [name, level, hp, damage]
 
     return monster
+
 
 def __create_ranged_monster():
     import monstersconfigs
