@@ -17,19 +17,22 @@ def generate_items():
         else:
             item = create_item_bonus_health()
         items.append(item)
+    
     return items
+
 
 def create_item_damage():
 
-    item = ["damage",itemsconfigs.NAMES_ITEM_DAMAGE[random.randint(0,5)],itemsconfigs.ITEMS_DAMAGE[random.randint(0,5)]]
+    item = [["damage"],[itemsconfigs.NAMES_ITEM_DAMAGE[random.randint(0,5)]],[itemsconfigs.ITEMS_DAMAGE[random.randint(0,5)]]]
     return item
 
 def create_item_health():
 
-    item = ["health",itemsconfigs.NAMES_ITEM_HEALTH[random.randint(0,3)],itemsconfigs.ITEMS_HEALTH[random.randint(0,3)]]
+    item = [["health"],[itemsconfigs.NAMES_ITEM_HEALTH[random.randint(0,3)]],[itemsconfigs.ITEMS_HEALTH[random.randint(0,3)]]]
     return item
 
 def create_item_bonus_health():
 
-    item = ["health_bonus",itemsconfigs.NAMES_ITEM_BONUS_HEALTH[random.randint(0,3)],itemsconfigs.ITEMS_BONUS_HEALTH[random.randint(0,3)]]
+    item = [["health_bonus"],[itemsconfigs.NAMES_ITEM_BONUS_HEALTH[random.randint(0,3)]],[itemsconfigs.ITEMS_BONUS_HEALTH[random.randint(0,3)]]]
     return item
+
